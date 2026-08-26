@@ -1,21 +1,885 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Viraj Malani - Developer Website</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Viraj Malani | Apps & Digital Experiences</title>
+
+  <meta name="description"
+        content="Viraj Malani creates simple, useful and beautifully designed mobile applications for everyday life and learning.">
+
+  <meta name="theme-color" content="#0b1020">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+      background:
+        radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.20), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(14, 165, 233, 0.16), transparent 30%),
+        radial-gradient(circle at 50% 100%, rgba(168, 85, 247, 0.14), transparent 35%),
+        #080c18;
+
+      color: #f8fafc;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    /* ================= NAVBAR ================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      background: rgba(8, 12, 24, 0.72);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .navbar {
+      height: 74px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+
+      border-radius: 12px;
+
+      display: grid;
+      place-items: center;
+
+      background: linear-gradient(
+        135deg,
+        #6366f1,
+        #8b5cf6
+      );
+
+      box-shadow:
+        0 8px 30px rgba(99,102,241,0.35);
+
+      font-weight: 900;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #aab3c5;
+      font-size: 14px;
+      font-weight: 600;
+      transition: 0.25s;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .nav-button {
+      padding: 10px 18px;
+      border-radius: 12px
+
+
+      background: white;
+      color: #101426 !important;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      padding: 110px 0 90px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 8px 14px;
+
+      border-radius: 999px;
+
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+
+      color: #cbd5e1;
+      font-size: 13px;
+      font-weight: 600;
+
+      margin-bottom: 25px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+
+      border-radius: 50%;
+      background: #22c55e;
+
+      box-shadow: 0 0 12px #22c55e;
+    }
+
+    .hero h1 {
+      max-width: 850px;
+      margin: auto;
+
+      font-size: clamp(46px, 7vw, 82px);
+      line-height: 1.02;
+
+      letter-spacing: -4px;
+
+      font-weight: 900;
+    }
+
+    .gradient-text {
+      background:
+        linear-gradient(
+          90deg,
+          #818cf8,
+          #c084fc,
+          #38bdf8
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 28px auto 0;
+
+      color: #9ca8bc;
+
+      font-size: 18px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+
+      margin-top: 36px;
+
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 14px 22px;
+
+      border-radius: 14px;
+
+      font-weight: 700;
+      font-size: 14px;
+
+      transition: 0.25s;
+    }
+
+    .button-primary {
+      background: linear-gradient(
+        135deg,
+        #6366f1,
+        #8b5cf6
+      );
+
+      box-shadow:
+        0 12px 35px rgba(99,102,241,0.3);
+    }
+
+    .button-primary:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 18px 45px rgba(99,102,241,0.45);
+    }
+
+    .button-secondary {
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      color: #dbe4f2;
+    }
+
+    .button-secondary:hover {
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-3px);
+    }
+
+    /* ================= SECTION ================= */
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-heading span {
+      color: #818cf8;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .section-heading h2 {
+      margin-top: 10px;
+
+      font-size: clamp(32px, 5vw, 48px);
+
+      letter-spacing: -2px;
+    }
+
+    .section-heading p {
+      margin: 15px auto 0;
+
+      max-width: 600px;
+
+      color: #8f9bb0;
+    }
+
+    /* ================= APP CARDS ================= */
+
+    .apps-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 24px;
+    }
+
+    .app-card {
+      position: relative;
+
+      padding: 30px;
+
+      border-radius: 28px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.075),
+          rgba(255,255,255,0.025)
+        );
+
+      border: 1px solid rgba(255,255,255,0.09);
+
+      overflow: hidden;
+
+      transition:
+        transform 0.3s,
+        border-color 0.3s;
+    }
+
+    .app-card:hover {
+      transform: translateY(-8px);
+
+      border-color:
+        rgba(129,140,248,0.45);
+    }
+
+    .app-glow {
+      position: absolute;
+
+      width: 220px;
+      height: 220px;
+
+      border-radius: 50%;
+
+      filter: blur(80px);
+
+      opacity: 0.16;
+
+      right: -80px;
+      top: -80px;
+
+      background: #6366f1;
+    }
+
+    .app-icon {
+      width: 68px;
+      height: 68px;
+
+      border-radius: 18px;
+
+      display: grid;
+      place-items: center;
+
+      background:
+        linear-gradient(
+          135deg,
+          #6366f1,
+          #a855f7
+        );
+
+      font-size: 30px;
+
+      box-shadow:
+        0 12px 35px rgba(99,102,241,0.3);
+
+      margin-bottom: 24px;
+    }
+
+    .app-card:nth-child(2) .app-icon {
+      background:
+        linear-gradient(
+          135deg,
+          #06b6d4,
+          #3b82f6
+        );
+    }
+
+    .app-card h3 {
+      font-size: 25px;
+      letter-spacing: -0.7px;
+    }
+
+    .app-card p {
+      margin-top: 12px;
+
+      color: #929db0;
+
+      font-size: 15px;
+    }
+
+    .app-tags {
+      display: flex;
+
+      gap: 8px;
+
+      flex-wrap: wrap;
+
+      margin-top: 22px;
+    }
+
+    .tag {
+      padding: 7px 11px;
+
+      border-radius: 999px;
+
+      background: rgba(255,255,255,0.06);
+
+      color: #b8c2d3;
+
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* ================= ABOUT ================= */
+
+    .about-box {
+      padding: 50px;
+
+      border-radius: 30px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(99,102,241,0.10),
+          rgba(255,255,255,0.035)
+        );
+
+      border: 1px solid rgba(255,255,255,0.08);
+
+      text-align: center;
+    }
+
+    .about-box h2 {
+      font-size: 36px;
+      letter-spacing: -1.5px;
+    }
+
+    .about-box p {
+      max-width: 700px;
+
+      margin: 18px auto 0;
+
+      color: #99a4b8;
+    }
+
+    /* ================= LINKS ================= */
+
+    .links-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 18px;
+    }
+
+    .link-card {
+      padding: 25px;
+
+      border-radius: 20px;
+
+      background: rgba(255,255,255,0.035);
+
+      border: 1px solid rgba(255,255,255,0.07);
+
+      transition: 0.25s;
+    }
+
+    .link-card:hover {
+      transform: translateY(-4px);
+
+      background: rgba(255,255,255,0.06);
+    }
+
+    .link-card strong {
+      display: block;
+
+      margin-bottom: 6px;
+    }
+
+    .link-card span {
+      color: #8d98ac;
+
+      font-size: 13px;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      padding: 45px 0;
+
+      border-top:
+        1px solid rgba(255,255,255,0.07);
+
+      color: #7f8a9d;
+    }
+
+    .footer-content {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 800px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .apps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .links-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 80px;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .about-box {
+        padding: 35px 25px;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Welcome to Viraj Malani's website</h1>
-  <nav>
-    <ul>
-      <li><a href="/index.html">Home</a></li>
-      <li><a href="/privacy-policy/keep-me-hydrated.html">Privacy - Keep Me Hydrated</a></li>
-      <li><a href="/privacy-policy/kids-learning-world.html">Privacy - Kids Learning World</a></li>
-      <li><a href="/terms.html">Terms</a></li>
-      <li><a href="/contact.html">Contact</a></li>
-    </ul>
-  </nav>
-  <p>This is a placeholder homepage. Replace with your content.</p>
+
+<!-- ================= NAVIGATION ================= -->
+
+<header>
+  <div class="container navbar">
+
+    <a href="/index.html" class="logo">
+      <div class="logo-icon">V</div>
+      Viraj Malani
+    </a>
+
+    <nav class="nav-links">
+      <a href="#apps">Apps</a>
+      <a href="#about">About</a>
+      <a href="#support">Support</a>
+      <a href="/terms.html">Terms</a>
+
+      <a href="/contact.html" class="nav-button">
+        Contact
+      </a>
+    </nav>
+
+  </div>
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<main>
+
+<section class="hero">
+
+  <div class="container">
+
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Mobile App and Web Developer
+    </div>
+
+    <h1>
+      Building simple apps
+      <br>
+      <span class="gradient-text">
+        people love to use.
+      </span>
+    </h1>
+
+    <p>
+      I create thoughtful mobile applications focused on
+      simplicity, useful features and beautiful user experiences.
+    </p>
+
+    <div class="hero-buttons">
+
+      <a href="#apps"
+         class="button button-primary">
+        Explore My Apps →
+      </a>
+
+      <a href="/contact.html"
+         class="button button-secondary">
+        Get in Touch
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= APPS ================= -->
+
+<section id="apps">
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <span>My Applications</span>
+
+      <h2>Apps made for everyday life.</h2>
+
+      <p>
+        Explore my collection of simple and useful mobile
+        applications designed with users in mind.
+      </p>
+
+    </div>
+
+
+    <div class="apps-grid">
+
+      <!-- KIDS LEARNING -->
+
+      <div class="app-card">
+
+        <div class="app-glow"></div>
+
+        <div class="app-icon">
+          🎓
+        </div>
+
+        <h3>
+          Kids Learning World
+        </h3>
+
+        <p>
+          A fun and engaging educational app designed to
+          help children learn through interactive lessons,
+          activities and practice.
+        </p>
+
+        <div class="app-tags">
+
+          <span class="tag">
+            Education
+          </span>
+
+          <span class="tag">
+            Kids
+          </span>
+
+          <span class="tag">
+            Learning
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- KEEP ME HYDRATED -->
+
+      <div class="app-card">
+
+        <div class="app-glow"></div>
+
+        <div class="app-icon">
+          💧
+        </div>
+
+        <h3>
+          Keep Me Hydrated
+        </h3>
+
+        <p>
+          A simple hydration reminder designed to help
+          users track their daily water intake and build
+          healthy hydration habits.
+        </p>
+
+        <div class="app-tags">
+
+          <span class="tag">
+            Health & Fitness
+          </span>
+
+          <span class="tag">
+            Water Tracking
+          </span>
+
+          <span class="tag">
+            Reminders
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about">
+
+  <div class="container">
+
+    <div class="about-box">
+
+      <h2>
+        Designed with simplicity in mind.
+      </h2>
+
+      <p>
+        My goal is to create mobile experiences that are
+        easy to understand, enjoyable to use and genuinely
+        useful in everyday life. Every app is built with
+        attention to performance, usability and privacy.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= SUPPORT ================= -->
+
+<section id="support">
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <span>Support & Information</span>
+
+      <h2>Need help?</h2>
+
+      <p>
+        Find privacy information, terms and support
+        resources for my applications.
+      </p>
+
+    </div>
+
+
+    <div class="links-grid">
+
+      <a
+        href="/privacy-policy/kids-learning-world.html"
+        class="link-card"
+      >
+        <strong>
+          Kids Learning World Privacy
+        </strong>
+
+        <span>
+          Learn how your information is handled.
+        </span>
+      </a>
+
+
+      <a
+        href="/privacy-policy/keep-me-hydrated.html"
+        class="link-card"
+      >
+        <strong>
+          Keep Me Hydrated Privacy
+        </strong>
+
+        <span>
+          Read the privacy policy for the app.
+        </span>
+      </a>
+
+
+      <a
+        href="/terms.html"
+        class="link-card"
+      >
+        <strong>
+          Terms & Conditions
+        </strong>
+
+        <span>
+          View the terms governing the use of my apps.
+        </span>
+      </a>
+
+
+      <a
+        href="/contact.html"
+        class="link-card"
+      >
+        <strong>
+          Contact & Support
+        </strong>
+
+        <span>
+          Get in touch for questions or support.
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+  <div class="container footer-content">
+
+    <div>
+      © 2026 Viraj Malani. All rights reserved.
+    </div>
+
+    <div class="footer-links">
+
+      <a href="/terms.html">
+        Terms
+      </a>
+
+      <a href="/contact.html">
+        Contact
+      </a>
+
+    </div>
+
+  </div>
+
+</footer>
+
 </body>
 </html>
